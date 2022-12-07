@@ -15,7 +15,7 @@ namespace KotobuApi.Controllers
         db_a8f994_kotobudbEntities db = new db_a8f994_kotobudbEntities();
 
         //Add post request to add the book to db
-
+        //api/book/
         public string Post(Book book)
         {
             //Book b1=new Book
@@ -36,13 +36,13 @@ namespace KotobuApi.Controllers
             return "The book was added";
 
         }
-
+        //api/book
         //Get All books
         public IEnumerable<Book> Get()
         {
             return db.Books.ToList();
         }
-
+        //api/book/id
         //Get One book use id to search
         public Book Get(int id)
         {

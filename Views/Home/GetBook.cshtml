@@ -1,0 +1,96 @@
+﻿@model KotobuApi.Models.Book
+
+
+
+<h2>جزئیات Book</h2>
+
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CcDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CcDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MainLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MainLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwitterLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwitterLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IgLink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IgLink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorys)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categorys)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cover)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cover)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

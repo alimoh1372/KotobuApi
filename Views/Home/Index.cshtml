@@ -1,24 +1,142 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿
+@using System.Web.Http
+@using System.Web.Http.Controllers
+@using System.Web.Http.Description
+@using System.Collections.ObjectModel
+@using KotobuApi.Areas.HelpPage.Models
+@using KotobuApi.Models
+@model IEnumerable<KotobuApi.Models.Book>
+
+
+<link type="text/css" href="~/Areas/HelpPage/HelpPage.css" rel="stylesheet" />
+<header class="help-page">
+    <div class="content-wrapper">
+        <div class="float-left">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    </div>
+</header>
+<div id="body" class="help-page">
+    <section class="featured">
+        <div class="content-wrapper">
+            <h2>تست API ها</h2>
+            <p dir="rtl">
+                این صفحه برای تست Api های مربط به book میباشد
+                <br />
+                شما میتوانید با استفاده از فرمت زیر از این Api استفاده نمائید.
+                <br />
+                <strong>
+                    BaseUrl/API/book/{Bookid}
+                </strong>
+                <br />
+                که در اینجا <strong>Bookid</strong> اختیاری میباشد
+
+            </p>
+        </div>
+    </section>
+    <section class="content-wrapper main-content clear-fix">
+        <section class="content-wrapper main-content clear-fix">
+
+
+            <h2 id="Book">Book</h2>
+            <table class="help-page-table">
+                <thead>
+                    <tr><th>API</th><th>توضیحات</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="api-name"> @Html.ActionLink("Get Request برای book", "GetBooks", "Home")</td>
+                        <td class="api-documentation">
+                            <p>
+                                ثبت درخواست Get برای همه ی کتاب ها
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+
+                        <td class="api-name"> @Html.ActionLink("Get Request برای book", "GetBook", "Home", new { id =3}, new { })</td>
+                        <td class="api-documentation">
+                            <p>
+                                در اینجا شماره آی دی 3 انتخاب شده است
+                                <br />
+                                @*@{
+                                    List<SelectListItem> items = new List<SelectListItem>();
+                                    //foreach (Book book in Model)
+                                    //{
+                                    //    ids.Add(book.ID);
+                                    //}
+                                    foreach (Book book in Model)
+                                    {
+                                        items.Add(new SelectListItem()
+                                        {
+                                            Text = book.ID.ToString(),
+                                            Value = book.ID.ToString()
+                                        });
+                                    }
+
+                                    @Html.DropDownList("IdDropDown", items, new { @class = "form-control", required = "required", id = "IdDropDown", @onchange = "SelectedValue();" })
+                                    ;
+                                }*@
+
+                                @*ViewBag.CityList is holding all the cities values*@
+                                @*@Html.DropDownListFor(model => model.City,ViewBag.CityList as SelectList,  new { @class = "form-control",  @onChange = "SelectedValue(this)" } )
+                                    @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })  
+                                    </div>*@
+                                @*<script>
+
+                                                //To get selected value an text of dropdownlist  
+                                                function SelectedValue(ddlObject)  
+                                                {  
+                                                    //Selected value of dropdownlist  
+                                                    var selectedValue = ddlObject.value;  
+                                                    //Selected text of dropdownlist  
+                                                    var selectedText = ddlObject.options[ddlObject.selectedIndex].innerHTML;  
+
+                                                    //alert popup with detail of seleceted value and text  
+                                                    alert(" Selected Value: " + selectedValue+" -- "+"Selected Text: " + selectedText ) ;  
+                                                }  
+                                    </script>*@
+                            </p>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="api-name"><a href="/Help/Api/GET-api-Book-id">GET api/Book/{id}</a></td>
+                        <td class="api-documentation">
+                            <p>No documentation available.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="api-name"><a href="/Help/Api/PUT-api-Book-id">PUT api/Book/{id}</a></td>
+                        <td class="api-documentation">
+                            <p>No documentation available.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="api-name"><a href="/Help/Api/DELETE-api-Book-id">DELETE api/Book/{id}</a></td>
+                        <td class="api-documentation">
+                            <p>No documentation available.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="api-name"><a href="/Help/Api/PATCH-api-Book-id">PATCH api/Book/{id}</a></td>
+                        <td class="api-documentation">
+                            <p>No documentation available.</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+@*@section scripts
+{
+    <script>
+                                    //To get selected value an text of dropdownlist  
+                                document.ready(function SelectedValue() {
+                                    @ViewBag.SelectedVal= document.getElementById("#IdDropDown").selectedValue;
+                                });
+
+    </script>
+}*@
+
