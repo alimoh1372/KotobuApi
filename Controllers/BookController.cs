@@ -4,18 +4,20 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using KotobuApi.Models;
 using Microsoft.AspNetCore.JsonPatch;
 
 namespace KotobuApi.Controllers
 {
-
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BookController : ApiController
     {
         db_a8f994_kotobudbEntities db = new db_a8f994_kotobudbEntities();
 
         //Add post request to add the book to db
         //api/book/
+       
         public string Post(Book book)
         {
             //Book b1=new Book
