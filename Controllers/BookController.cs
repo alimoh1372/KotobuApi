@@ -5,8 +5,10 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using System.Web.Mvc;
 using KotobuApi.Models;
 using Microsoft.AspNetCore.JsonPatch;
+using Newtonsoft.Json;
 
 namespace KotobuApi.Controllers
 {
@@ -17,9 +19,11 @@ namespace KotobuApi.Controllers
 
         //Add post request to add the book to db
         //api/book/
-       
-        public string Post(Book book)
+       [System.Web.Http.HttpPost]
+        public JsonResult Post(Book book)
         {
+            int intResult;
+            JsonResult result;
             //Book b1=new Book
             //{
             //    Name="Ghoorbaghe",
@@ -34,8 +38,26 @@ namespace KotobuApi.Controllers
             //     TwitterLink="This is a twiter link"
             //}
             db.Books.Add(book);
-            db.SaveChanges();
-            return "The book was added";
+           intResult= db.SaveChanges();
+           if (intResult>0)
+           {
+              result  = new JsonResult
+               {
+                   Data = "The book added...",
+                   JsonRequestBehavior = JsonRequestBehavior.AllowGet
+               };
+            }
+           else
+           {
+               result = new JsonResult()
+               {
+                   Data = "There is a problem on Adding Object to database please call administrator...",
+                   JsonRequestBehavior = JsonRequestBehavior.AllowGet
+               };
+           }
+            
+
+            return result;
 
         }
         //api/book
@@ -49,15 +71,16 @@ namespace KotobuApi.Controllers
         public Book Get(int id)
         {
          Book _book=db.Books.Find(id);
-            return _book;
+            return  _book;
         }
 
         //Update all property of  a book with that id
 
-
-        public string Put(int id,Book book)
+        [System.Web.Http.HttpPut]
+        public JsonResult Put(int id,Book book)
         {
-           
+            int result = -1;
+            JsonResult jsonResult;
             Book _book = db.Books.Find(id);
             _book.Name = book.Name;
             _book.Author = book.Author;
@@ -71,9 +94,24 @@ namespace KotobuApi.Controllers
             _book.TwitterLink = book.TwitterLink;
 
             db.Entry(_book).State = System.Data.Entity.EntityState.Modified;
-            db.SaveChanges();
-
-            return "Book is Updated";
+           result= db.SaveChanges();
+           if (result>0)
+           {
+               jsonResult = new JsonResult()
+               {
+                   Data = $"The book ({_book.ID}) Updated...",
+                   JsonRequestBehavior = JsonRequestBehavior.AllowGet
+               };
+           }
+           else
+           {
+               jsonResult = new JsonResult()
+               {
+                   Data = $"There is a problem on adding to database.\nPlease call Administrator...",
+                   JsonRequestBehavior = JsonRequestBehavior.AllowGet
+               };
+            }
+            return jsonResult;
         }
 
 
@@ -85,15 +123,24 @@ namespace KotobuApi.Controllers
             db.SaveChanges();
             return "The book was deleted...";
         }
-        [HttpPatch]
+        [System.Web.Http.HttpPatch]
         public string Patch(int id,[FromBody] JsonPatchDocument<Book> vm)
         {
+            int result = -1;
             Book book = db.Books.Find(id);
             vm.ApplyTo(book);
             db.Entry(book).State = System.Data.Entity.EntityState.Modified;
 
-            db.SaveChanges();
-            return "It Is a succes patch";
+           result= db.SaveChanges();
+           if (result>0)
+           {
+               return "The patch done successfully...";
+           }
+           else
+           {
+               return $"There is a problem on adding to database.\nPlease call Administrator...";
+           }
+            
 
         }
     }
