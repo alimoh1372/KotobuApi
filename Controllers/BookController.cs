@@ -26,16 +26,16 @@ namespace KotobuApi.Controllers
             JsonResult result;
             //Book b1=new Book
             //{
-            //    Name="Ghoorbaghe",
-            //    Author="Ali mohammadzade",
-            //    Categorys="Amuzeshi",
-            //     CC="This is a test",
-            //     CcDescription="This is a test for that",
-            //     Cover="Cover link",
-            //     Description="this is a description",
-            //     IgLink="test link",
-            //     MainLink="this is the main link",
-            //     TwitterLink="This is a twiter link"
+            //    Name = "Ghoorbaghe",
+            //    Author = "Ali mohammadzade",
+            //    Categorys = "Amuzeshi",
+            //     CC = "This is a test",
+            //     CcDescription = "This is a test for that",
+            //     Cover = "Cover link",
+            //     Description = "this is a description",
+            //     IgLink = "test link",
+            //     MainLink = "this is the main link",
+            //     TwitterLink = "This is a twiter link"
             //}
             db.Books.Add(book);
            intResult= db.SaveChanges();
@@ -43,7 +43,7 @@ namespace KotobuApi.Controllers
            {
               result  = new JsonResult
                {
-                   Data = "The book added...",
+                   Data = $"The book(Name:{book.Name}-ID:{book.ID}) added...",
                    JsonRequestBehavior = JsonRequestBehavior.AllowGet
                };
             }

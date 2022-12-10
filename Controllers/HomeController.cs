@@ -21,6 +21,11 @@ namespace KotobuApi.Controllers
             _books = bookController.Get();
             return View(_books);
         }
+
+        public ActionResult Index2()
+        {
+            return View();
+        }
         public ActionResult GetBooks()
         {
             IEnumerable<Book> _books = null;

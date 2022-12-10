@@ -1,0 +1,66 @@
+:root
+{
+    --main-color : #449EF0;
+}
+
+* 
+{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+*::after , *::before
+{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body
+{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-family: Roboto;
+}
+
+.request-button
+{
+    border: none;
+    background-color: var(--main-color);
+    color : #FFF;
+    font-size: 1.2rem;
+    border-radius: 100px;
+    padding: 8px 24px ;
+    cursor: pointer;
+    transition: background-color 300ms;
+    margin-top: 1rem ;
+}
+
+.request-button:hover
+{
+    background-color: #52a6f5;
+}
+
+.request-button:active
+{
+    background-color: #79beff;
+}
+
+.request-title
+{
+    text-align: center;
+    width : 80%;
+    font-size: 1.2rem;
+}
+
+.request-input
+{
+    margin:1rem 0 ;
+    border: 2px solid;
+    max-width: 350px;
+    min-width: 350px;
+    padding: .5rem;
+}

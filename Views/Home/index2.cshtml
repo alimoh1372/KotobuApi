@@ -1,0 +1,55 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Requests</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+
+
+<body>
+
+    <p class="request-title">
+        Click and send get request to /book
+    </p>
+
+    <button class="request-button"
+            onclick="getBook()">
+        Click
+    </button>
+
+    <p class="request-title">
+        Click and send get request to /book/1
+    </p>
+
+    <button class="request-button"
+            onclick="getOneBook()">
+        Click
+    </button>
+
+    <p class="request-title">
+        Click and send post request
+    </p>
+
+    <textarea class="request-input"></textarea>
+
+<button class="request-button"
+        onclick="createNewBook()">
+    Click
+</button>
+<br/>
+<p class="request-title">
+    back to main page
+</p>
+@Html.ActionLink( "Main Page","Index","Home",new {},new {@class="request-button"});
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="~/Scripts/script.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+</body>
+</html>
