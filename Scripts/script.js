@@ -1,6 +1,6 @@
 var api;
 with (location) {
-    api = href + "api"; /*"http://kotobu-001-site1.atempurl.com/api"*/
+    api = protocol+"//"+host+"/"+ "api"; /*"http://kotobu-001-site1.atempurl.com/api"*/
 }
 
 

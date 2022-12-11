@@ -38,17 +38,18 @@
 
     <textarea class="request-input"></textarea>
 
-<button class="request-button"
-        onclick="createNewBook()">
-    Click
-</button>
-<br/>
-<p class="request-title">
-    back to main page
-</p>
-@Html.ActionLink( "Main Page","Index","Home",new {},new {@class="request-button"});
+    <button class="request-button"
+            onclick="createNewBook()">
+        Click
+    </button>
+    <br />
+    <p class="request-title">
+        back to main page
+    </p>
+    @Html.ActionLink("Main Page", "Index", "Home", new { }, new { @class = "request-button" });
 
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios@1.2.1/dist/axios.min.js"></script>
+    
     <script src="~/Scripts/script.js"></script>
     <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 </body>
